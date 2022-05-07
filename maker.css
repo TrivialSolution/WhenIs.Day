@@ -94,9 +94,9 @@ select {
     padding:0;
 }
 #outputURL {
-    margin: 2rem;
+    margin: 0.3rem;
     margin-top: 0rem;
-    overflow-y: scroll;
+    margin-bottom: 0.1rem;
 }
 #linkTitle {
     text-align: center;
