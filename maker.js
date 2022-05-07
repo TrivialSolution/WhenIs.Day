@@ -97,5 +97,11 @@ function generate() {
     //update preview iFrame
 	document.getElementById('preview').setAttribute("src",path);
 }
+
+function copy(){
+    navigator.clipboard.writeText(document.getElementById("outputURL").textContent);
+}
 //click a generate button
 document.getElementById("generate").addEventListener("click", generate);
+//add a copy text button
+document.getElementById("copy").addEventListener("click", copy);

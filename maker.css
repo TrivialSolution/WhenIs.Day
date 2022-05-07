@@ -93,3 +93,12 @@ select {
 #previewPane {
     padding:0;
 }
+#outputURL {
+    margin: 2rem;
+    margin-top: 0rem;
+    overflow-y: scroll;
+}
+#linkTitle {
+    text-align: center;
+    margin: 1rem;
+}
