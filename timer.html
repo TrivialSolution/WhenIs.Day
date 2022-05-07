@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+
+
+<head>
+<link rel="stylesheet" href="timer.css">
+</head>
+
+<body>
+<div class="backgroundVideo">
+    <iframe id="backgroundVideoFrame" src="" frameborder="0"></iframe>
+</div>
+<div id="box">
+    <div id="title"></div>
+    <div id="timer">
+        <!--basically a grid but lots of tags and emptiness because I also need to make certain elements appear/disappear -->
+        <span id="days" class="days time"></span><span class="days colon">:</span>
+        <span id="hours" class="time"></span><span class="colon">:</span>
+        <span id="minutes" class="time"></span><span class="colon">:</span>
+        <span id="seconds" class="time"></span>
+        <span id="daysLabel" class="label days">DAYS</span><span class="days"></span>
+        <span id="hoursLabel" class="label">HOURS</span><span></span>
+        <span id="minutesLabel" class="label">MINUTES</span><span></span>
+        <span id="secondsLabel" class="label">SECONDS</span>
+    </div>
+</div>
+
+<script src="timer.js"></script> 
+
+<!--
+This is a static webpage that generates a timer based on query string parameters passed to it in the URL.
+These parameters are passed in the format document.html?date=YYYY-MM-DDTHH:MM:SSZ&title=foo&finish=bar...
+Where the query string begins with ?, and variables are passed using = and delimited with &.
+
+
+-->
+
+</body>
+</html>

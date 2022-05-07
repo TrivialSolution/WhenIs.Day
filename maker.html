@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8">
+
+<head>
+<link rel="stylesheet" href="maker.css">
+</head>
+
+<div id="grid">
+    <div id="settingsPane">
+        <div id="instructions">
+            <h1>Settings</h1>
+            All settings are optional.
+        </div>
+        <div id="target" class="settingSection">
+            <h2>Time/Date</h2>
+            <div class="settingContainer">
+                <label for="date" title="If you do not select a date, this will create a daily recurring event.">Select a Date:</label>
+                <input type="date" id="date" name="date" value="2038-01-19" title="If you do not select a date, this will create a daily recurring event.">
+            </div>
+            <div class="settingContainer">
+                <label for="time" title="If you do not select a time, the current time will be used.">Select a Time:</label>
+                <input type="time" id="time" name="time" step="2" value="03:14:07" title="If you do not select a time, the current time will be used.">
+            </div>
+            <div class="settingContainer">
+                <label for="sync" title="Sync makes the timer show the same value everywhere, while local adjusts the timer based on the user's local time zone.">Time Zone:</label>
+                <select id="sync" name="sync" title="Sync makes the timer show the same value everywhere, while local adjusts the timer based on the user's local time zone.">
+                    <option value="sync">Sync</option>
+                    <option value="local">Local</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="text" class="settingSection">
+            <h2>Text</h2>
+            <div class="settingContainer">
+                <label for="title" title="Pick the name of the timer. Leave blank for no title.">Page Title:</label>
+                <input type="text" id="title" name="title" value="" title="Pick the name of the timer. Leave blank for no title.">
+            </div>
+            <div class="settingContainer">
+                <label for="finish" title="When the countdown reaches zero, what should the clock read? By default it reads zero, but you can have it display messages instead.">Timer Completion Text:</label>
+                <input type="text" id="finish" name="finish" value="" title="When the countdown reaches zero, what should the clock read?">
+            </div>
+        </div>
+
+        <div id="numberFormat" class="settingSection">
+            <h2>Number Formatting</h2>
+            <div class="settingContainer">
+                <label for="decimals" title="How many decimal places to include in seconds. Purely cosmetic since you can't actually set a target time with more precision.">Decimals places to display</label>
+                <input type="number" id="decimals" value="0" min="0" max="3" title="How many decimal places to include in seconds. Purely cosmetic since you can't actually set a target time with more precision.">
+            </div>
+            <div class="settingContainer">
+                <label for="underline">Underline the numbers in the timer</label>
+                <input type="checkbox" name="underline" id="underline">
+            </div>
+            <div class="settingContainer">
+                <label for="hideLabels">Hide the day/hour/minute/second label text</label>
+                <input type="checkbox" name="hideLabels" id="hideLabels">
+            </div>
+            <div class="settingContainer">
+                <label for="hideDays">Make the largest time unit hours instead of days</label>
+                <input type="checkbox" name="hideDays" id="hideDays">
+            </div>
+        </div>
+
+        <div id="textFormat" class="settingSection">
+            <h2>Text Formatting</h2>
+            <div class="settingContainer">
+                <label for="textCol" title="Pick a color for the text on the page.">Text Color:</label>
+                <input type="color" id="textCol" name="textCol" value="#000000" title="Pick a color for the text on the page.">
+            </div>
+            <div class="settingContainer">
+                <label for="finishCol" title="Pick a color for countdown finish text. For instance, if you want the timer to turn red at 0 seconds.">Finish Color:</label>
+                <input type="color" id="finishCol" name="finishCol" value="#000000" title="Pick a color for countdown finish text. For instance, if you want the timer to turn red at 0 seconds.">
+            </div>
+            <div class="settingContainer">
+                <label for="shadow">Give the text a shadow</label>
+                <input type="checkbox" name="shadow" id="shadow" checked>
+            </div>
+            <div class="settingContainer">
+                <label for="shadowCol" title="Pick a color for the text shadow.">Shadow Color:</label>
+                <input type="color" id="shadowCol" name="shadowCol" value="#888888" title="Pick a color for the text shadow.">
+            </div>
+            <div class="settingContainer">
+                <label for="box" title="Display a box behind the text for improved visibility">Display a box behind the text</label>
+                <input type="checkbox" name="box" id="box"  title="Display a box behind the text for improved visibility">
+            </div>
+            <div class="settingContainer">
+                <label for="boxCol" title="Pick a color for the text on the page.">Box Color:</label>
+                <input type="color" id="boxCol" name="boxCol" value="#FFFFFF" title="Pick a color for the box.">
+            </div>
+        </div>
+        <div id="background" class="settingSection">
+            <h2>Background</h2>
+            <div class="settingContainer">
+                <label for="bgImg" title="If no image or an invalid image, falls back to background color.">Background Image Link:</label>
+                <input type="text" id="bgImg" name="bgImg" title="If no image or an invalid image, falls back to background color.">
+            </div>
+            <div class="settingContainer">
+                <label for="bgCol" title="Pick a background color. This will be overridden if a valid background image is used.">Background Color:</label>
+                <input type="color" id="bgCol" name="bgCol" value="#FFFFFF" title="Pick a background color. This will be overridden if a valid background image is used.">
+            </div>
+            <div class="settingContainer">
+                <label for="bgVid" title="This setting will override other background settings.">Background Video Youtube Link:</label>
+                <input type="text" id="bgVid" name="bgVid" title="This setting will override other background settings.">
+            </div>
+        </div>
+
+        <div id="advanced" class="settingSection">
+            <h2>Advanced</h2>
+            <div class="settingContainer">
+                <label for="countUp" title="Count down to a future time or count up from a past time?">Count up or down?</label>
+                <select id="countUp" title="Count down to a future time or count up from a past time?">
+                    <option value="down">Count down</option>
+                    <option value="up">Count up</option>
+                </select>
+            </div>
+            <div class="settingContainer">
+                <label for="recur" title="Make it so the timer always counts up/down from/to the next/last instance of a repeating event">Recurring?</label>
+                <select id="recur" name="recur" title="Make it so the timer always counts up/down from/to the next/last instance of a repeating event">
+                    <option value="no">One-time Event</option>
+                    <option value="daily">Daily</option>
+                    <option value="yearly">Annually</option>
+                </select>
+            </div>
+            <div class="settingContainer">
+                <label for="duration" title="Instead of counting to/from a specific time, have the timer count the same amount of time every time the page is loaded">Use a duration rather than a set time</label>
+                <input type="checkbox" name="duration" id="duration"  title="Instead of counting to/from a specific time, have the timer count the same amount of time every time the page is loaded">
+            </div>
+            <div class="settingContainer">
+                <label for="length" title="For instance, if you want the page to be a 5 minute timer, set this to 300.">Duration in seconds</label>
+                <input type="number" min="0" value="60" name="length" id="length" title="For instance, if you want the page to be a 5 minute timer, set this to 300.">
+            </div>
+            <div class="settingContainer">
+                <label for="obfuscate" title="Scramble the text in the URL so it can't easily be read">Obfuscate URL</label>
+                <input type="checkbox" name="obfuscate" id="obfuscate"  title="Scramble the text in the URL so it can't easily be read">
+            </div>
+        </div>
+    </div>   
+    <div id="previewPane">
+        <iframe id="preview" src="" title="Timer Preview"></iframe> 
+    </div>
+    <div id="outputPane">
+        <div id="generate" class="control">Generate</div>
+        <span id="outputURL"></span>
+    </div>
+</div>
+
+
+<script src="maker.js"></script> 
+
+</body>
+</html>
