@@ -66,7 +66,10 @@ select {
     padding: 0.1rem;
     min-height: 150px;
     max-height: 80vh;
-    height: 70vh;
+    /* This is a bit nonobvious. I want the preview pane to have a 16:9 aspect ratio initially but be adjustable otherwise.
+    aspect-ratio prevents resizing so I can't use that. However I know this element will have initial width of 60vw due to the settings pane's initial sizing.
+    So for 16:9 I should set this element's height equal to 9/16*60vw ≈ 32vw */
+    height: 32vw; 
     grid-area: preview;
 }
 
@@ -77,13 +80,7 @@ select {
     margin: 1rem;
     padding: 0.1rem;
 }
-.control {
-	font-size: 14px;
-	border: 3px solid MediumSlateBlue;
-	padding: 10px;
-	text-align: center;
-    cursor: pointer;
-}
+
 #preview {
     height: 100%;
     width: 100%;
@@ -97,8 +94,20 @@ select {
     margin: 0.3rem;
     margin-top: 0rem;
     margin-bottom: 0.1rem;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-y:hidden;
 }
 #linkTitle {
     text-align: center;
     margin: 1rem;
+}
+button{
+    width:100%;
+    padding: 0.7rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
 }

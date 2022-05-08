@@ -96,10 +96,17 @@ function generate() {
     document.getElementById("outputURL").textContent = path; 
     //update preview iFrame
 	document.getElementById('preview').setAttribute("src",path);
+
+    //Briefly set text on generate button to generated so user has some visual feedback.
+    document.getElementById("generate").innerHTML = "Generated Timer!";
+    setTimeout(function(){document.getElementById("generate").innerHTML = "Generate Timer";},800);
 }
 
 function copy(){
     navigator.clipboard.writeText(document.getElementById("outputURL").textContent);
+    //Briefly set text on copy button to Copied so user has some visual feedback.
+    document.getElementById("copy").innerHTML = "Copied Link!";
+    setTimeout(function(){document.getElementById("copy").innerHTML = "Copy Link";},800);
 }
 //click a generate button
 document.getElementById("generate").addEventListener("click", generate);

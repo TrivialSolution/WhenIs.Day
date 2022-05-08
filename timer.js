@@ -27,14 +27,14 @@ function getQueryVariable(variable) {
 //Technically it would be more efficient to just pass all of these things to the DOM directly
 //but that would create serious content injection issues. Managing styles individually is safer.
 
-let now = new Date(); //find current time to use in calculations
+let now = new Date(); //find current date/time to use in calculations
 
 // Set the countdown target time. query variable name date.
 // Ideally the person entering the URL is entering a UTC time (using a Z at the end of the date string).
 // This way the countdown works the same for users anywhere; i.e. a user in one location can send the page to a user in a different timezone,
 // and the countdown should run out at the same absolute time for both of them. 
 // Local times (without the Z at the end) can still be entered but will cause different behavior in different time zones.
-let targetDate = new Date(getQueryVariable("date")).getTime();
+let targetDate = new Date(getQueryVariable("date")).getTime(); //targetDate is a time, whereas now is a date.
 // if no date is selected, use the current time.
 if (isNaN(targetDate)||!getQueryVariable("date")) {
 	targetDate = now.getTime();
@@ -63,10 +63,6 @@ if (getQueryVariable("finish") == false) {
 let countUp = 1
 if (!!getQueryVariable("countUp")) {
 	countUp = -1;
-	//if the date right now is in the future/no date was supplied, set timer to start counting from current time.
-	if (targetDate-now.getTime()>0) {
-		targetDate = now.getTime();
-	}
 }
 
 //fixed duration rather than target time. query variable name duration.
@@ -87,26 +83,30 @@ if (!isNaN(parseInt(getQueryVariable("duration")))) {
 if (getQueryVariable("recur") == "daily") {
 	if (countUp == 1){ //if countup false (ie counting down)
 		//reschedule target to next occurrence
-		targetDate=now.getTime()+((targetDate - now.getTime()) % (1000 * 60 * 60 * 24))
+		targetDate=now.getTime()+((((targetDate - now.getTime()) % (1000 * 60 * 60 * 24)) + (1000 * 60 * 60 * 24)) % (1000 * 60 * 60 * 24))
 	} else { //if countup true
 		//reschedule target to previous occurrence
-		targetDate=now.getTime()-((now.getTime() - targetDate) % (1000 * 60 * 60 * 24))
+		targetDate=now.getTime()-((((now.getTime() - targetDate) % (1000 * 60 * 60 * 24)) + (1000 * 60 * 60 * 24)) % (1000 * 60 * 60 * 24))
 	}
 } else if (getQueryVariable("recur") == "yearly") {  
 	//due to leap years it is not sufficient to simply change the year or mod 365 days.
 	//instead set year of target to current year, then adjust one year forward or backward accordingly.
+	let datePlaceholder = new Date();  //temporarily make a date object version of targetDate for year manipulation
+	datePlaceholder.setTime(targetDate);
 	if (countUp == 1){ //if countup false (ie counting down)
 		//reschedule target to next occurrence
-		targetDate=targetDate.setFullYear(now.getFullYear).getTime(); //reschedule targetDate to current year
-		if (now.getTime()-targetDate>0) {//if targetDate is in the past
-			targetDate=targetDate.setFullYear(now.getFullYear + 1).getTime(); //reschedule targetDate to next year
+		datePlaceholder.setFullYear(now.getFullYear()); //reschedule targetDate to current year
+		if (now.getTime()-datePlaceholder.getTime()>0) {//if targetDate is in the past
+			datePlaceholder.setFullYear(now.getFullYear() + 1);
 		}
+		targetDate = datePlaceholder.getTime(); //reschedule targetDate to next year
 	} else { //if countup true
 		//reschedule target to previous occurrence
-		targetDate=targetDate.setFullYear(now.getFullYear).getTime(); //reschedule targetDate to current year
-		if (now.getTime()-targetDate<0) {//if targetDate is in the future
-			targetDate=targetDate.setFullYear(now.getFullYear - 1).getTime(); //reschedule targetDate to last year
+		datePlaceholder.setFullYear(now.getFullYear()); //reschedule targetDate to current year
+		if (now.getTime()-datePlaceholder.getTime()<0) {//if targetDate is in the future
+			datePlaceholder.setFullYear(now.getFullYear() - 1); //reschedule targetDate to last year
 		}
+		targetDate = datePlaceholder.getTime(); 
 	}
 } 
 
@@ -123,10 +123,9 @@ if (!isNaN(parseInt(getQueryVariable("decimals")))) {
 //takes in youtube video identifier of form dQw4w9WgXcQ and converts to form 
 //https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&showinfo=0&mute=1&rel=0&autoplay=1&loop=1&playlist=dQw4w9WgXcQ
 if (!!getQueryVariable("bgVid")) {
-	let embed = "https://www.youtube.com/embed/" + getQueryVariable("bgVid") + "?controls=0&showinfo=0&enablejsapi=1&mute=1&rel=0&autoplay=1&loop=1&playlist=" + getQueryVariable("bgVid") + "&origin=" + encodeURI(window.location.origin);
+	let embed = "https://www.youtube.com/embed/" + getQueryVariable("bgVid") + "?controls=0&showinfo=0&mute=1&rel=0&autoplay=1&loop=1&playlist=" + getQueryVariable("bgVid");// + "&enablejsapi=1&origin=" + encodeURI(window.location.origin)
 	document.getElementById("backgroundVideoFrame").setAttribute("src", embed);
 	document.getElementById("backgroundVideoFrame").style.visibility = "visible";
-	console.log(embed);
 }
 
 //background image. query variable name bgImg.

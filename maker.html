@@ -9,7 +9,7 @@
 <div id="grid">
     <div id="settingsPane">
         <div id="instructions">
-            <h1>Settings</h1>
+            <h1>Static Timer Generator</h1>
             All settings are optional.
         </div>
         <div id="target" class="settingSection">
@@ -101,8 +101,8 @@
                 <input type="color" id="bgCol" name="bgCol" value="#FFFFFF" title="Pick a background color. This will be overridden if a valid background image is used.">
             </div>
             <div class="settingContainer">
-                <label for="bgVid" title="This setting will override other background settings.">Background Video Youtube Link:</label>
-                <input type="text" id="bgVid" name="bgVid" title="This setting will override other background settings.">
+                <label for="bgVid" title="Note: certain Youtube videos have embed restrictions which will prevent them from playing.">Background Video Youtube Link:</label>
+                <input type="text" id="bgVid" name="bgVid" title="Note: certain Youtube videos have embed restrictions which will prevent them from playing.">
             </div>
         </div>
 
@@ -141,8 +141,8 @@
         <iframe id="preview" src="" title="Timer Preview"></iframe> 
     </div>
     <div id="outputPane">
-        <div id="generate" class="control">Generate Timer</div>
-        <div id="copy" class="control">Copy Link</div>
+        <button id="generate" class="control">Generate Timer</button>
+        <button id="copy" class="control">Copy Link</button>
         <div id="linkTitle"><h3>Link to this timer:</h3></div>
         <div id="outputURL"></div>
     </div>
