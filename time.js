@@ -9,6 +9,7 @@
 
 //helper code to parse URL query string
 let query = window.location.search.substring(1); //save url
+console.log(window.location);
 if (query.includes("obfsc=8&")) { //if url is obfuscated, de-obfuscate
 	query = atob(query.replace("obfsc=8&",""));
 }
@@ -123,7 +124,7 @@ if (!isNaN(parseInt(getQueryVariable("decimals")))) {
 //takes in youtube video identifier of form dQw4w9WgXcQ and converts to form 
 //https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&showinfo=0&mute=1&rel=0&autoplay=1&loop=1&playlist=dQw4w9WgXcQ
 if (!!getQueryVariable("bgVid")) {
-	let embed = "https://www.youtube.com/embed/" + getQueryVariable("bgVid") + "?controls=0&showinfo=0&mute=1&rel=0&autoplay=1&loop=1&playlist=" + getQueryVariable("bgVid");// + "&enablejsapi=1&origin=" + encodeURI(window.location.origin)
+	let embed = "https://www.youtube.com/embed/" + getQueryVariable("bgVid") + "?controls=0&showinfo=0&mute=1&rel=0&autoplay=1&loop=1&playlist=" + getQueryVariable("bgVid");
 	document.getElementById("backgroundVideoFrame").setAttribute("src", embed);
 	document.getElementById("backgroundVideoFrame").style.visibility = "visible";
 }

@@ -90,8 +90,8 @@ function generate() {
         path = "obfsc=8&" + btoa(path);
     }
 
-    //update output URL
-    path = window.location.href.slice(0,window.location.href.lastIndexOf("/")) + "/timer.html?" + path; //replace page name with maker.html, add ? to start query string;
+    //update output URL. Note that since it cuts off at the least / you may have to edit this if the maker is the website's root index page.
+    path = window.location.href.slice(0,window.location.href.lastIndexOf("/")) + "/time?" + path; //replace page name with time page, add ? to start query string;
 
     document.getElementById("outputURL").textContent = path; 
     //update preview iFrame
