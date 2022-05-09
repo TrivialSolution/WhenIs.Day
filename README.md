@@ -58,7 +58,7 @@ Alternatively, you may decide to use the time page directly by writing query str
 and so on. Not including a variable will cause it to exhibit default behavior.
 
 ### Self-hosting
-Because StaticTimer is fully static, it is easy to host. In most cases, all you have to do is upload the files to a directory on your website.
+Because StaticTimer is fully static, it is easy to host. In most cases, all you have to do is upload the files to a directory on your website. [Github link is here](https://github.com/Lithovox/StaticTimer/).
 
 Doing so will cause the make page to appear at URL/make, and the time page to appear at URL/time. For instance, if your website's domain is example.com, and you upload the files to the folder /countdown/, then example.com/countdown/time will link to the time page.
 
