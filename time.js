@@ -1,12 +1,3 @@
-//Displays a countdown to a given time, with cosmetic customizations based on URL query string.
-//Page argument format should be document.html?date=YYYY-MM-DDTHH:MM:SSZ&title=foo&finish=bar
-//For instance a countdown to 1 February 2034 at 5:30 p.m., with title text "The thing happens in..." and the timer reading "Now!" when it reaches 0
-//should have a query string ?date=2034-02-01T17:30:00Z&title=The thing happens in...&finish=Now!
-//Note that since a URL cannot end with a question mark you may have to add an extra dummy variable at the end in some cases; for instance use
-//the string ?date=2034-02-01T17:30:00Z&title=How long until the thing happens?& when the URL would end in a question mark otherwise.
-//If date is not populated a one minute timer is the default. If title is not populated then title is hidden by default.
-//A number of other customizations are available, explained further below.
-
 //helper code to parse URL query string
 let query = window.location.search.substring(1); //save url
 console.log(window.location);
@@ -28,14 +19,14 @@ function getQueryVariable(variable) {
 //Technically it would be more efficient to just pass all of these things to the DOM directly
 //but that would create serious content injection issues. Managing styles individually is safer.
 
-let now = new Date(); //find current date/time to use in calculations
+let now = new Date();
 
 // Set the countdown target time. query variable name date.
 // Ideally the person entering the URL is entering a UTC time (using a Z at the end of the date string).
 // This way the countdown works the same for users anywhere; i.e. a user in one location can send the page to a user in a different timezone,
 // and the countdown should run out at the same absolute time for both of them. 
 // Local times (without the Z at the end) can still be entered but will cause different behavior in different time zones.
-let targetDate = new Date(getQueryVariable("date")).getTime(); //targetDate is a time, whereas now is a date.
+let targetDate = new Date(getQueryVariable("date")).getTime();
 // if no date is selected, use the current time.
 if (isNaN(targetDate)||!getQueryVariable("date")) {
 	targetDate = now.getTime();
@@ -123,6 +114,7 @@ if (!isNaN(parseInt(getQueryVariable("decimals")))) {
 //takes a youtube link. this overrides other background options.
 //takes in youtube video identifier of form dQw4w9WgXcQ and converts to form 
 //https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&showinfo=0&mute=1&rel=0&autoplay=1&loop=1&playlist=dQw4w9WgXcQ
+//note that many vidoes will not work due to embed restrictions. or because youtube just feels like not working. or because CORS policies.
 if (!!getQueryVariable("bgVid")) {
 	let embed = "https://www.youtube.com/embed/" + getQueryVariable("bgVid") + "?controls=0&showinfo=0&mute=1&rel=0&autoplay=1&loop=1&playlist=" + getQueryVariable("bgVid");
 	document.getElementById("backgroundVideoFrame").setAttribute("src", embed);
@@ -185,11 +177,40 @@ if (hideDays) {
 var x = setInterval(function() {
 
 	// Refresh the current date and time.
-	now = new Date().getTime();
-  
+	now = new Date();
+	//if recur is enabled we also need to check if the target time needs to wrap around
+	if (getQueryVariable("recur") == "daily") {
+		if (countUp == 1){ //if countup false (ie counting down)
+			//reschedule target to next occurrence
+			targetDate=now.getTime()+((((targetDate - now.getTime()) % (1000 * 60 * 60 * 24)) + (1000 * 60 * 60 * 24)) % (1000 * 60 * 60 * 24))
+		} else { //if countup true
+			//reschedule target to previous occurrence
+			targetDate=now.getTime()-((((now.getTime() - targetDate) % (1000 * 60 * 60 * 24)) + (1000 * 60 * 60 * 24)) % (1000 * 60 * 60 * 24))
+		}
+	} else if (getQueryVariable("recur") == "yearly") {  
+		//due to leap years it is not sufficient to simply change the year or mod 365 days.
+		//instead set year of target to current year, then adjust one year forward or backward accordingly.
+		let datePlaceholder = new Date();  //temporarily make a date object version of targetDate for year manipulation
+		datePlaceholder.setTime(targetDate);
+		if (countUp == 1){ //if countup false (ie counting down)
+			//reschedule target to next occurrence
+			datePlaceholder.setFullYear(now.getFullYear()); //reschedule targetDate to current year
+			if (now.getTime()-datePlaceholder.getTime()>0) {//if targetDate is in the past
+				datePlaceholder.setFullYear(now.getFullYear() + 1);
+			}
+			targetDate = datePlaceholder.getTime(); //reschedule targetDate to next year
+		} else { //if countup true
+			//reschedule target to previous occurrence
+			datePlaceholder.setFullYear(now.getFullYear()); //reschedule targetDate to current year
+			if (now.getTime()-datePlaceholder.getTime()<0) {//if targetDate is in the future
+				datePlaceholder.setFullYear(now.getFullYear() - 1); //reschedule targetDate to last year
+			}
+			targetDate = datePlaceholder.getTime(); 
+		}
+	} 
 	// Find the distance between now and the count down date
 	// countUp = -1 if enabled.
-	let distance = countUp*(targetDate - now);
+	let distance = countUp*(targetDate - now.getTime());
     
 	// calculations for hours, minutes, seconds
 	// alter caulcation based on whether days will be displayed or everything is in hours
@@ -209,7 +230,8 @@ var x = setInterval(function() {
 	// Output the result in timer div
 	document.getElementById("minutes").innerText = minutes.toString().padStart(2, 0);
 	//display seconds. adds decimals as appropriate. !!casts to boolean (1 or 0).
-	document.getElementById("seconds").innerText = seconds.toFixed(decimals).toString().padStart(!!decimals+decimals+2, 0);
+	//toFixed() does not work here because it rounds, causing the seconds to read "60" occasionally when decimals=0.
+	document.getElementById("seconds").innerText = (seconds.toString()+"000000").slice(0,seconds.toString().lastIndexOf(".")+decimals+!!decimals).padStart(!!decimals+decimals+2, 0);
     
 	// If the countdown ends, replace the timer with text
 	if (distance < 0) {
@@ -223,6 +245,5 @@ var x = setInterval(function() {
 			document.getElementById("minutes").innerText = "00";
 			document.getElementById("seconds").innerText = Number(0).toFixed(decimals).toString().padStart(!!decimals+decimals+2, 0);
 		}
-
-  }
+  	}
 }, 30);
