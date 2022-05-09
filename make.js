@@ -19,15 +19,19 @@ function generate() {
     //get inputs, append to the URL string.
 
     //get date/time by adding elements to a string.
-    let dateTime = "YYYY-MM-DDTHH:MM:SSZ"; //placeholder to remind proper format for date constructor.
-    dateTime = document.getElementById("date").value + "T"; 
-    dateTime += document.getElementById("time").value;
-    if (document.getElementById("sync").value == "sync") {
-        //if sync is slected, convert date to UTC string
-        dateTime = new Date(dateTime).toISOString();
-    } 
-    path += "date=" + encodeURIComponent(dateTime) + "&";
-
+    try {
+        let dateTime = "YYYY-MM-DDTHH:MM:SSZ"; //placeholder to remind proper format for date constructor.
+        dateTime = document.getElementById("date").value + "T"; 
+        dateTime += document.getElementById("time").value;
+        if (document.getElementById("sync").value == "sync") {
+            //if sync is slected, convert date to UTC string
+            dateTime = new Date(dateTime).toISOString();
+        } 
+        path += "date=" + encodeURIComponent(dateTime) + "&";
+    } catch (error) {
+        //if invalid date, just don't add the date to query string.
+    }
+    
     //add start/finish text. If blank, do not add.
     if (document.getElementById("title").value){
         path += "title=" + encodeURIComponent(document.getElementById("title").value) + "&";
