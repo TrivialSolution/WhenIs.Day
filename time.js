@@ -225,13 +225,14 @@ var x = setInterval(function() {
 	}
 
 	let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	let seconds = ((distance % (1000 * 60)) / 1000);
+	let seconds = ((distance % (1000 * 60)) / 1000) + 0.000001; //this pads seconds so the decimal display works properly
+	console.log(seconds);
     
 	// Output the result in timer div
 	document.getElementById("minutes").innerText = minutes.toString().padStart(2, 0);
 	//display seconds. adds decimals as appropriate. !!casts to boolean (1 or 0).
 	//toFixed() does not work here because it rounds, causing the seconds to read "60" occasionally when decimals=0.
-	document.getElementById("seconds").innerText = (seconds.toString()+"000000").slice(0,seconds.toString().lastIndexOf(".")+decimals+!!decimals).padStart(!!decimals+decimals+2, 0);
+	document.getElementById("seconds").innerText = (seconds.toString()).slice(0,seconds.toString().indexOf(".")+decimals+!!decimals).padStart(!!decimals+decimals+2, 0);
     
 	// If the countdown ends, replace the timer with text
 	if (distance < 0) {
