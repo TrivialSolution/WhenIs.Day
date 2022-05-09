@@ -41,7 +41,7 @@ The time page has fairly boring default behavior for each of the options if they
 | Hide Days | `hideDays` | *boolean* | Whether to hide the days in the timer, making the largest unit hours. Default is to show days. |
 | Text Color | `textCol` | #RRGGBB | The color of the title and timer text. Default is black. |
 | Finish Color | `finishCol` | #RRGGBB | The color of the optional finish text when the counter finishes; for instance, if you want the words "Time's Up! to be red. Default is black. |
-| Text Shadow | `shadowCol` | #RRGGBB | Sets the color of the drop shadow beneath the text. The make page defaults to selecting a gray drop shadow, while the time page will not include any drop shadow by default. |
+| Text Shadow | `shadowCol` | #RRGGBB | Sets the color of the drop shadow beneath the text. The default is no drop shadow. |
 | Box | `box` | #RRGGBB | Sets the color of a box around the text. Usually used to make the text more visible on a hard-to-see background. Default is no box around the text. |
 | Background Image | `bgImg` | image link | The link to an image background. This should be a file , e.g. PNG, SVG, JPG, GIF, etc., and not a webpage itself. If no background image is specified or the image link is invalid, the background color will be displayed. |
 | Background Color | `bgCol` | #RRGGBB | A background color. This will display if no other background options are selected. The default is white. |
