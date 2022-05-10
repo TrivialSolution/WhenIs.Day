@@ -116,3 +116,5 @@ function copy(){
 document.getElementById("generate").addEventListener("click", generate);
 //add a copy text button
 document.getElementById("copy").addEventListener("click", copy);
+//initial generation so users know that it's a preview pane
+generate();
