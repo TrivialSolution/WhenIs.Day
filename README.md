@@ -5,12 +5,12 @@ Make your own custom timer at [whenis.day/make](https://whenis.day/make).
 
 ### Examples
 The variety of settings available allow the static time.html page to display a wide variety of timers.
-* [A countdown to a date in the future](https://whenis.day/time?date=2061-07-28T00%3A00%3A00&title=When%20will%20Halley's%20Comet%20return%3F&)
-* [A page that starts a 5 minute timer every time it is opened](https://whenis.day/time?date=T&hideDays=1&duration=300&decimals=2&)
+* [A countdown to a date in the future](https://whenis.day/time?date=2061-07-28T19%3A00%3A00.000Z&title=Halley's%20Comet%20Returns%20In%3A&bgImg=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1502481851512-e9e2529bfbf9%3Fixid%3DMnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8%3Fq%3D75%26fm%3Djpg%26w%3D1080&textCol=%23ffffff&shadowCol=%23000000&)
+* [A barebones page that starts a 5 minute timer every time it is opened](https://whenis.day/time?date=T&hideDays=1&duration=300&decimals=2&)
 * [A clock that displays the current time in India](https://whenis.day/time?date=2022-05-08T18%3A30%3A00.000Z&title=Time%20in%20India&hideLabels=1&hideDays=1&countUp=1&recur=daily&)
 * [A more advanced page showing off a variety of cosmetic tweaks (including a background video) and hides its contents in the URL](https://whenis.day/time?obfsc=8&ZGF0ZT1UJnRpdGxlPVRpbWUlMjBTaW5jZSUyMExhc3QlMjBSaWNrcm9sbCUzQSZkZWNpbWFscz0yJnRleHRDb2w9JTIzZmZmZmZmJnNoYWRvd0NvbD0lMjMwMDAwMDAmaGlkZUxhYmVscz0xJmhpZGVEYXlzPTEmYmdWaWQ9ZFF3NHc5V2dYY1EmY291bnRVcD0xJmR1cmF0aW9uPTAm)
 
-Note that daylight savings time may appear to break certain timers. For instance, if you have a countdown to a recurring meeting at 5pm daily and use the "sync" option in make.html to synchronize the timer for people across multiple time zones, the countdown will not adjust itself when your time zone shifts, because it is synchronized based on UTC. Using the local time setting will cause the timer to adjust for daylight savings (though it may require a page refresh), but will not synchronize across time zones. 
+Note that daylight savings time may *appear* to break certain timers. For instance, if you have a countdown to a recurring meeting at 5pm daily and use the "sync" option in make.html to synchronize the timer for people across multiple time zones, the countdown will not adjust itself when your time zone shifts, because it is synchronized based on UTC. Using the local time setting will cause the timer to adjust for daylight savings (though it may require a page refresh), but will not synchronize across time zones. 
 
 ## Usage
 StaticTimer consists of two webpages:
