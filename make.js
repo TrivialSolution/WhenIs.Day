@@ -1,15 +1,15 @@
 //initialize inputs
-//set date input to today
-let today = new Date();
-let day = today.getDate();
-let month = today.getMonth() + 1;
-let year = today.getFullYear();
+//set default date/time to this time tomorrow
+let tomorrow = new Date(new Date().getTime()+24*60*60*1000);
+let day = tomorrow.getDate();
+let month = tomorrow.getMonth() + 1;
+let year = tomorrow.getFullYear();
 if (month < 10) month = "0" + month;
 if (day < 10) day = "0" + day;    
 document.getElementById("date").value = year + "-" + month + "-" + day;
 
-//set time input default to 5 minutes from now
-document.getElementById("time").value = new Date(new Date().getTime()+60*60*1000).toTimeString().slice(0,8);
+//set time input default to current time
+document.getElementById("time").value = new Date().toTimeString().slice(0,8);
 
 //Based on user inputs on the page, generate a URL with query string to the corresponding timer page, and display a preview of that page.
 function generate() {
