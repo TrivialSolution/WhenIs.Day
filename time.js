@@ -226,7 +226,6 @@ var x = setInterval(function() {
 
 	let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 	let seconds = ((distance % (1000 * 60)) / 1000) + 0.000001; //this pads seconds so the decimal display works properly
-	console.log(seconds);
     
 	// Output the result in timer div
 	document.getElementById("minutes").innerText = minutes.toString().padStart(2, 0);
