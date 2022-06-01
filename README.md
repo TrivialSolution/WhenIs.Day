@@ -1,4 +1,4 @@
-# [WhenIs.Day](whenis.day)
+# [WhenIs.Day](https://whenis.day)
 A static webpage that displays a countdown, and can be customized using URL query strings. All processing is done client-side, meaning no server is required. 
 
 Make your own custom timer at [whenis.day/make](https://whenis.day/make).
