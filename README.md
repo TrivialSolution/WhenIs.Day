@@ -4,7 +4,7 @@ A static webpage that displays a countdown, and can be customized using URL quer
 Make your own custom timer at [whenis.day/make](https://whenis.day/make).
 
 ### Examples
-The variety of settings available allow the static time.html page to display a wide variety of timers.
+The variety of settings available allow the static time.html page to display a wide variety of timers. Note that some versions of Markdown (including Github's) will not display the timer previews below; go to [WhenIs.Day](https://whenis.day) or click the links below to see the previews. 
 
 The classic example is [a countdown to a date in the future](https://whenis.day/time?date=2061-07-28T19%3A00%3A00.000Z&title=Halley's%20Comet%20Returns%20In%3A&bgImg=example_assets/stars.jpg&textCol=%23ffffff&shadowCol=%23000000&). This style can be used to countdown to special events, deadlines, product launches, and more.  
 <object data="https://whenis.day/time?date=2061-07-28T19%3A00%3A00.000Z&title=Halley%27s%20Comet%20Returns%20In%3A&bgImg=example_assets/stars.jpg&textCol=%23ffffff&shadowCol=%23000000&" title="Timer Preview" width="560" height="315" type="text/html"></object>
@@ -12,10 +12,10 @@ The classic example is [a countdown to a date in the future](https://whenis.day/
 A variety of other timers exhibiting very different behavior are possible, however:  
 
 [A barebones page that starts a 5 minute timer every time it is opened](https://whenis.day/time?hideDays=1&duration=300&decimals=2&):  
-<object data="https://whenis.day/time?hideDays=1&duration=300&decimals=2&" title="Timer Preview" width="560" height="315" type="text/html"></object>
+<object data="https://whenis.day/time?hideDays=1&duration=300&decimals=2&" title="Timer Preview" width="560" height="315" type="text/html" style="border: 1px solid"></object>
 
 [A simple clock that displays the current time in India](https://whenis.day/time?date=2022-05-08T18%3A30%3A00.000Z&title=Time%20in%20India&hideLabels=1&hideDays=1&countUp=1&recur=daily&):  
-<object data="https://whenis.day/time?date=2022-05-08T18%3A30%3A00.000Z&title=Time%20in%20India&hideLabels=1&hideDays=1&countUp=1&recur=daily&" title="Timer Preview" width="560" height="315" type="text/html"></object>
+<object data="https://whenis.day/time?date=2022-05-08T18%3A30%3A00.000Z&title=Time%20in%20India&hideLabels=1&hideDays=1&countUp=1&recur=daily&" title="Timer Preview" width="560" height="315" type="text/html" style="border: 1px solid"></object>
 
 [A highly advanced page showing off a variety of cosmetic tweaks (including a background video)](https://whenis.day/time?obfsc=8&ZGF0ZT1UJnRpdGxlPVRpbWUlMjBTaW5jZSUyMExhc3QlMjBSaWNrcm9sbCUzQSZkZWNpbWFscz0yJnRleHRDb2w9JTIzZmZmZmZmJnNoYWRvd0NvbD0lMjMwMDAwMDAmaGlkZUxhYmVscz0xJmhpZGVEYXlzPTEmYmdWaWQ9ZFF3NHc5V2dYY1EmY291bnRVcD0xJmR1cmF0aW9uPTAm):  
 <object data="https://whenis.day/time?obfsc=8&ZGF0ZT1UJnRpdGxlPVRpbWUlMjBTaW5jZSUyMExhc3QlMjBSaWNrcm9sbCUzQSZkZWNpbWFscz0yJnRleHRDb2w9JTIzZmZmZmZmJnNoYWRvd0NvbD0lMjMwMDAwMDAmaGlkZUxhYmVscz0xJmhpZGVEYXlzPTEmYmdWaWQ9ZFF3NHc5V2dYY1EmY291bnRVcD0xJmR1cmF0aW9uPTAm" title="Timer Preview" width="560" height="315" type="text/html"></object>
