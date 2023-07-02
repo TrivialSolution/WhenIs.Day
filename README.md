@@ -6,18 +6,19 @@ Make your own custom timer at [whenis.day/make](https://whenis.day/make).
 ### Examples
 The variety of settings available allow the static time.html page to display a wide variety of timers.
 
-The classic example is [a countdown to a date in the future](https://whenis.day/time?date=2061-07-28T19%3A00%3A00.000Z&title=Halley's%20Comet%20Returns%20In%3A&bgImg=example_assets/stars.jpg&textCol=%23ffffff&shadowCol=%23000000&). This style can be used to countdown to special events, deadlines, product launches, and more.
-<iframe id="preview" src="https://whenis.day/time?date=2061-07-28T19%3A00%3A00.000Z&title=Halley%27s%20Comet%20Returns%20In%3A&bgImg=example_assets/stars.jpg&textCol=%23ffffff&shadowCol=%23000000&" title="Timer Preview" width="560" height="315"></iframe>
+The classic example is [a countdown to a date in the future](https://whenis.day/time?date=2061-07-28T19%3A00%3A00.000Z&title=Halley's%20Comet%20Returns%20In%3A&bgImg=example_assets/stars.jpg&textCol=%23ffffff&shadowCol=%23000000&). This style can be used to countdown to special events, deadlines, product launches, and more.  
+<object data="https://whenis.day/time?date=2061-07-28T19%3A00%3A00.000Z&title=Halley%27s%20Comet%20Returns%20In%3A&bgImg=example_assets/stars.jpg&textCol=%23ffffff&shadowCol=%23000000&" title="Timer Preview" width="560" height="315" type="text/html"></object>
 
-A variety of other timers exhibiting very different behavior are possible, however: 
+A variety of other timers exhibiting very different behavior are possible, however:  
 
-[A barebones page that starts a 5 minute timer every time it is opened](https://whenis.day/time?hideDays=1&duration=300&decimals=2&)
-<iframe id="preview" src="https://whenis.day/time?hideDays=1&duration=300&decimals=2&" title="Timer Preview" width="560" height="315"></iframe>
+[A barebones page that starts a 5 minute timer every time it is opened](https://whenis.day/time?hideDays=1&duration=300&decimals=2&):  
+<object data="https://whenis.day/time?hideDays=1&duration=300&decimals=2&" title="Timer Preview" width="560" height="315" type="text/html"></object>
 
-[A simple clock that displays the current time in India](https://whenis.day/time?date=2022-05-08T18%3A30%3A00.000Z&title=Time%20in%20India&hideLabels=1&hideDays=1&countUp=1&recur=daily&)
-<iframe id="preview" src="https://whenis.day/time?date=2022-05-08T18%3A30%3A00.000Z&title=Time%20in%20India&hideLabels=1&hideDays=1&countUp=1&recur=daily&" title="Timer Preview" width="560" height="315"></iframe>
+[A simple clock that displays the current time in India](https://whenis.day/time?date=2022-05-08T18%3A30%3A00.000Z&title=Time%20in%20India&hideLabels=1&hideDays=1&countUp=1&recur=daily&):  
+<object data="https://whenis.day/time?date=2022-05-08T18%3A30%3A00.000Z&title=Time%20in%20India&hideLabels=1&hideDays=1&countUp=1&recur=daily&" title="Timer Preview" width="560" height="315" type="text/html"></object>
 
-[A highly advanced page showing off a variety of cosmetic tweaks (including a background video)](https://whenis.day/time?obfsc=8&ZGF0ZT1UJnRpdGxlPVRpbWUlMjBTaW5jZSUyMExhc3QlMjBSaWNrcm9sbCUzQSZkZWNpbWFscz0yJnRleHRDb2w9JTIzZmZmZmZmJnNoYWRvd0NvbD0lMjMwMDAwMDAmaGlkZUxhYmVscz0xJmhpZGVEYXlzPTEmYmdWaWQ9ZFF3NHc5V2dYY1EmY291bnRVcD0xJmR1cmF0aW9uPTAm)
+[A highly advanced page showing off a variety of cosmetic tweaks (including a background video)](https://whenis.day/time?obfsc=8&ZGF0ZT1UJnRpdGxlPVRpbWUlMjBTaW5jZSUyMExhc3QlMjBSaWNrcm9sbCUzQSZkZWNpbWFscz0yJnRleHRDb2w9JTIzZmZmZmZmJnNoYWRvd0NvbD0lMjMwMDAwMDAmaGlkZUxhYmVscz0xJmhpZGVEYXlzPTEmYmdWaWQ9ZFF3NHc5V2dYY1EmY291bnRVcD0xJmR1cmF0aW9uPTAm):  
+<object data="https://whenis.day/time?obfsc=8&ZGF0ZT1UJnRpdGxlPVRpbWUlMjBTaW5jZSUyMExhc3QlMjBSaWNrcm9sbCUzQSZkZWNpbWFscz0yJnRleHRDb2w9JTIzZmZmZmZmJnNoYWRvd0NvbD0lMjMwMDAwMDAmaGlkZUxhYmVscz0xJmhpZGVEYXlzPTEmYmdWaWQ9ZFF3NHc5V2dYY1EmY291bnRVcD0xJmR1cmF0aW9uPTAm" title="Timer Preview" width="560" height="315" type="text/html"></object>
 
 Timers can easily be embedded in pages as iframes; just enclose the timer link in an iframe tag and insert into the page HTML:
 `<iframe src="https://whenis.day/time?duration=60" width="560" height="315"></iframe>`
